@@ -4,7 +4,7 @@
 
 This program is called exactly like the `ssh` binary from OpenSSH, except
 instead of opening a remote shell it will print the username (if specified),
-host, and port (if specified) given on the command line.
+host, port (if specified), and command (if specified) given on the command line.
 
 ```bash
 ./parse-ssh-cl -J bastion -X estelle@myhost:1234
