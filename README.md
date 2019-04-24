@@ -69,6 +69,22 @@ directory and then do whatever with the `parse-ssh-cl` binary it spits out.
 As far as dependencies go just about any distribution's development tools should
 be more than enough to build and use. It pretty just uses libc.
 
+How do you actually use it in your shell? Anyone who is this deep in shell
+customization uses ZSH, right?
+
+```
+ssh() {
+    if [[ -n "$TMUX" ]]; then
+        cur="$(tmux display-message -p '#W')"
+        tmux rename-window $(parse-ssh-cl "$@" | awk '/^Host/ { print $2; }')
+        command ssh "$@"
+        tmux rename-window "$cur"
+    else
+        exec command ssh "$@"
+    fi
+}
+```
+
 ## Never Asked Questions.
 
 Do you support `-l` and `-p` parsing? Not yet. That's a great idea me.
