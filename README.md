@@ -89,6 +89,8 @@ ssh() {
 
 Do you support `-l` and `-p` parsing? Not yet. That's a great idea me.
 
+What happens if `ssh` changes options? I'll be sad.
+
 ## License.
 
 Pretty much all of this code is straight up copy/pasted from
