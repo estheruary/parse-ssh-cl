@@ -3,6 +3,7 @@
 int
 main(int argc, char *argv[]) {
   int opt;
+  printf("Options:");
   while ((opt = getopt(argc, argv, "-1246ab:c:e:fgi:kl:m:no:p:qstvx"
       "AB:CD:E:F:GI:J:KL:MNO:PQ:R:S:TVw:W:XYy")) != -1) {
     // Stop processing options after the first positional argument and set
@@ -11,7 +12,13 @@ main(int argc, char *argv[]) {
       optind -= 1;
       break;
     }
+
+    printf(" -%c", opt);
+    if (optarg != 0) {
+        printf(" %s", optarg);
+    }
   }
+  printf("\n");
 
   if (optind >= argc) {
     fprintf(stderr, "No destination found.\n");
